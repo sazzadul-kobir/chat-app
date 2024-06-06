@@ -41,7 +41,7 @@ dependencies:
   firebase_storage: ^11.6.9
   dash_chat_2: ^0.0.15
   firebase_analytics: ^10.8.9
-  google_fonts: ^6.2.0
+  google_fonts: 6.1.0
   delightful_toast: ^1.1.0
   get_it: ^7.6.7
   image_picker: ^1.0.8
