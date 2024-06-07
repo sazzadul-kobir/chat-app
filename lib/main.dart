@@ -1,19 +1,36 @@
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:untitled6/screens/login_screen.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:untitled6/services/auth_services.dart';
 
 
 
-import 'package:untitled6/utils.dart';
+import 'package:untitled6/utils/utils.dart';
 
-void main()async{
+import 'firebase_options.dart';
 
-  WidgetsFlutterBinding.ensureInitialized();
-  await SetupFirebase();
+void main() async{
+
+  await Setup();
+
+
+
   runApp(MyApp());
 }
+
+Future<void> Setup() async{
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SetupFirebase();
+  await registerServices();
+
+
+}
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
