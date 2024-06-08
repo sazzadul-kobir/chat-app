@@ -6,6 +6,7 @@ import 'package:untitled6/screens/login_screen.dart';
 import 'dart:ui';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:untitled6/services/auth_services.dart';
+import 'package:untitled6/services/navigation_service.dart';
 
 
 
@@ -33,18 +34,25 @@ Future<void> Setup() async{
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final GetIt _getIt=GetIt.instance;
+  late final navigationService _navigationservice;
+
+    MyApp({super.key}){
+  _navigationservice=_getIt.get<navigationService>();
+  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: _navigationservice.navigatorkey,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         textTheme: GoogleFonts.montserratTextTheme()
       ),
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      initialRoute: "/login",
+      routes: _navigationservice.routes,
     );
   }
 }

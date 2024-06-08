@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:untitled6/const/const.dart';
 import 'package:untitled6/services/auth_services.dart';
+import 'package:untitled6/services/navigation_service.dart';
 
 import '../widgets/custom_form_field.dart';
 
@@ -18,12 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   String? email, password;
 
   late AuthService _authSerivice;
+  late navigationService _navigationService;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _authSerivice=_getIt.get<AuthService>();
+    _navigationService=_getIt.get<navigationService>();
   }
 
   @override
@@ -33,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
+
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
             child: Column(
               children: [
