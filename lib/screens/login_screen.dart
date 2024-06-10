@@ -74,9 +74,9 @@ class _LoginScreenState extends State<LoginScreen> {
           if (_loginFormKey.currentState?.validate() ?? false) {
             _loginFormKey.currentState!.save();
             bool result=await _authSerivice.login(email!, password!);
-            print(result);
-            if(result){
 
+            if(result){
+              _navigationService.PushReplacement("/home");
             }
           }
         },

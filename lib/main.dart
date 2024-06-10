@@ -36,9 +36,11 @@ Future<void> Setup() async{
 class MyApp extends StatelessWidget {
   final GetIt _getIt=GetIt.instance;
   late final navigationService _navigationservice;
+  late final AuthService _authService;
 
     MyApp({super.key}){
   _navigationservice=_getIt.get<navigationService>();
+  _authService=_getIt.get<AuthService>();
   }
 
   @override
@@ -51,7 +53,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.montserratTextTheme()
       ),
       debugShowCheckedModeBanner: false,
-      initialRoute: "/login",
+      initialRoute:_authService.user !=null? "/home": "/login",
       routes: _navigationservice.routes,
     );
   }
